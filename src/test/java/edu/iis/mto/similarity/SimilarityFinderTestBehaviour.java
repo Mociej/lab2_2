@@ -1,17 +1,13 @@
 package edu.iis.mto.similarity;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
 import edu.iis.mto.searcher.Mock;
-import edu.iis.mto.searcher.SearchResult;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SimilarityFinderTest {
-
+class SimilarityFinderTestBehaviour {
     static public int[] seq1;
     static public int[] seq2;
     static public int[] seqEmpty;
@@ -52,18 +48,5 @@ class SimilarityFinderTest {
     void calculateJackardSimilarityBothNull() {
         assertThrows(NullPointerException.class, () -> similarityFinder.calculateJackardSimilarity(null, null));
     }
-    @Test
-    void calculateJackardSimilarityFirstEmpty() {
-        assertEquals(0, similarityFinder.calculateJackardSimilarity(seqEmpty, seq1));
-    }
-    @Test
-    void calculateJackardSimilaritySecondEmpty() {
-        assertEquals(0, similarityFinder.calculateJackardSimilarity(seq1, seqEmpty));
-    }
-    @Test
-    void calculateJackardSimilarityBothEmpty() {
-        assertEquals(1, similarityFinder.calculateJackardSimilarity(seqEmpty, seqEmpty));
-    }
-
 
 }
