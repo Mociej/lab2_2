@@ -21,7 +21,8 @@ class SimilarityFinderTest {
     void init() {
         mock = new Mock();
         similarityFinder = new SimilarityFinder(mock);
-
+        seq1= new int[] {1,4,56,8};
+        seq2= new int[] {2,4,55,7};
     }
 
     @Test
@@ -43,7 +44,7 @@ class SimilarityFinderTest {
     }
     @Test
     void calculateJackardSimilaritySecondNull() {
-        assertThrows(NullPointerException.class, () -> similarityFinder.calculateJackardSimilarity(seq1, null));
+        assertThrows(IllegalArgumentException.class, () -> similarityFinder.calculateJackardSimilarity(seq1, null));
     }
     @Test
     void calculateJackardSimilarityBothNull() {
