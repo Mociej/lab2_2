@@ -8,12 +8,25 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class SimilarityFinderTest {
-    public static SimilarityFinder similarityFinder;
-    int [] seq1;
+
+    static public int[] seq1;
+    static public int[] seq2;
+    public Mock mock;
+    public SimilarityFinder similarityFinder;
+
+    @BeforeEach
+    void init() {
+        mock = new Mock();
+        similarityFinder = new SimilarityFinder(mock);
+
+    }
+
     @Test
     void test() {
-        similarityFinder=new SimilarityFinder(new Mock());
+
     }
 
     @BeforeEach
@@ -25,7 +38,16 @@ class SimilarityFinderTest {
     }
 
     @Test
-    void calculateJackardSimilarity() {
+    void calculateJackardSimilarityFirstNull() {
+        assertThrows(NullPointerException.class, () -> similarityFinder.calculateJackardSimilarity(null, seq2));
+    }
+    @Test
+    void calculateJackardSimilaritySecondNull() {
+        assertThrows(NullPointerException.class, () -> similarityFinder.calculateJackardSimilarity(seq1, null));
+    }
+    @Test
+    void calculateJackardSimilarityBothNull() {
+        assertThrows(NullPointerException.class, () -> similarityFinder.calculateJackardSimilarity(null, null));
     }
 
 
